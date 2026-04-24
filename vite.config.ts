@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/fatima-automation-premium/',
   server: {
-    base: '/fatima-automation-premium/',
     host: "::",
     port: 8080,
     hmr: {
