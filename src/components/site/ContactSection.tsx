@@ -151,15 +151,24 @@ export const ContactSection = () => {
 
             <div className="rounded-2xl overflow-hidden border border-border shadow-card h-72">
               <iframe
-                title="Fatima Automation — Johar Town, Lahore"
-                src="https://www.google.com/maps?q=Khayaban-e-Firdousi,Johar%20Town,Lahore&output=embed"
+                title="Fatima Automation — Office #1, Mian Plaza, Khayaban-e-Firdousi, Johar Town, Lahore"
+                src="https://www.google.com/maps?q=Mian%20Plaza%2C%20Khayaban-e-Firdousi%2C%20Block%20B1%2C%20Johar%20Town%2C%20Lahore%2C%20Pakistan&output=embed"
                 width="100%"
                 height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
+                style={{ border: 0 }}
+                className="w-full h-full"
               />
             </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Mian+Plaza+Khayaban-e-Firdousi+Johar+Town+Lahore"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary-glow transition-colors"
+            >
+              <MapPin className="size-4" /> Open in Google Maps
+            </a>
           </div>
 
           {/* Form */}
