@@ -43,6 +43,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -56,12 +57,16 @@ export default {
       backgroundImage: {
         'gradient-gold': 'var(--gradient-gold)',
         'gradient-gold-soft': 'var(--gradient-gold-soft)',
+        'gradient-blue': 'var(--gradient-blue)',
+        'gradient-blue-soft': 'var(--gradient-blue-soft)',
+        'gradient-premium': 'var(--gradient-premium)',
         'gradient-hero': 'var(--gradient-hero)',
         'gradient-card': 'var(--gradient-card)',
       },
       boxShadow: {
         elegant: 'var(--shadow-elegant)',
         glow: 'var(--shadow-glow)',
+        'glow-orange': 'var(--shadow-glow-orange)',
         card: 'var(--shadow-card)',
       },
       borderRadius: {
@@ -85,8 +90,8 @@ export default {
           "50%": { transform: "translateY(-12px)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(32 92% 56% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(32 92% 56% / 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(210 100% 56% / 0.35)" },
+          "50%": { boxShadow: "0 0 40px hsl(210 100% 56% / 0.65)" },
         },
       },
       animation: {
