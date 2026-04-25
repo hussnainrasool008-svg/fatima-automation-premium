@@ -35,7 +35,7 @@ export const ProjectsSection = () => {
         <SectionHeader
           eyebrow="Projects"
           title={<>Selected <span className="text-gradient-gold">Installations</span></>}
-          description="A glimpse of recent electric fence, gate automation and home automation work completed across Lahore and Multan."
+          description="A glimpse of recent electric fence, gate automation and home automation work completed across Lahore."
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[220px] gap-4">
