@@ -8,7 +8,6 @@ const AREAS = [
   "Johar Town",
   "Gulberg",
   "Model Town",
-  "Multan",
 ];
 
 const REVIEWS = [
