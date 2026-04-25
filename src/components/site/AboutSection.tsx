@@ -32,7 +32,7 @@ export const AboutSection = () => {
         {/* Service areas */}
         <div className="mb-16">
           <h3 className="font-display text-2xl md:text-3xl font-semibold text-center mb-6">
-            Trusted across major cities
+            Trusted Across Major Societies
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {AREAS.map((a) => (
