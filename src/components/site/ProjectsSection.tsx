@@ -13,6 +13,7 @@ import gmTrack from "@/assets/work/gm_track-1200w.webp";
 import ssSecurity from "@/assets/work/ss_security-1200w.webp";
 import ssWhy from "@/assets/work/gate_premium_entrance.png";
 import gateMotor from "@/assets/work/gate_motor_closeup.png";
+import slidingGateMotor from "@/assets/work/sliding_gate_motor.png";
 
 const PROJECTS = [
   { src: ssSecurity, title: "Premium Perimeter Fence", category: "Electric Fence", span: "lg:col-span-2 lg:row-span-2" },
@@ -28,6 +29,7 @@ const PROJECTS = [
   { src: ef1, title: "Premium Estate Fencing", category: "Electric Fence" },
   { src: ssWhy, title: "Premium Automated Entrance", category: "Gate Automation" },
   { src: gateMotor, title: "Swing Gate Motor System", category: "Gate Automation" },
+  { src: slidingGateMotor, title: "Sliding Gate Motor Installation", category: "Gate Automation" },
 ];
 
 export const ProjectsSection = () => {
