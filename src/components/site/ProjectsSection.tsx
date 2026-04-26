@@ -11,7 +11,7 @@ import efSsrods from "@/assets/work/ef_ssrods-1200w.webp";
 import gmPhone from "@/assets/work/gm_phonecontrol-1200w.webp";
 import gmTrack from "@/assets/work/gm_track-1200w.webp";
 import ssSecurity from "@/assets/work/ss_security-1200w.webp";
-import ssWhy from "@/assets/work/ss_why-1200w.webp";
+import ssWhy from "@/assets/work/gate_premium_entrance.png";
 
 const PROJECTS = [
   { src: ssSecurity, title: "Premium Perimeter Fence", category: "Electric Fence", span: "lg:col-span-2 lg:row-span-2" },
@@ -25,7 +25,7 @@ const PROJECTS = [
   { src: efFactory, title: "Industrial Perimeter", category: "Electric Fence" },
   { src: efPf5, title: "Boundary Wall Protection", category: "Electric Fence" },
   { src: ef1, title: "Premium Estate Fencing", category: "Electric Fence" },
-  { src: ssWhy, title: "Why Choose Us — Showcase", category: "Home Automation" },
+  { src: ssWhy, title: "Premium Automated Entrance", category: "Gate Automation" },
 ];
 
 export const ProjectsSection = () => {
