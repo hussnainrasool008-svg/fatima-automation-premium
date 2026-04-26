@@ -10,7 +10,7 @@ import {
   BatteryCharging,
   ShieldCheck,
 } from "lucide-react";
-import efImg from "@/assets/work/ef_ss_poles.png";
+import efImg from "@/assets/work/ef_energizer.png";
 
 const FEATURES = [
   { icon: Smartphone, title: "Mobile Control App", desc: "Arm, disarm and monitor your fence from anywhere." },
