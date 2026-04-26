@@ -140,8 +140,7 @@ export const ContactSection = () => {
                       Address
                     </div>
                     <div className="font-medium leading-relaxed">
-                      Office #1, Mian Plaza,
-                      <br /> Khayaban-e-Firdousi, Johar Town,
+                      15-A Khayaban-e-Amin,
                       <br /> Lahore, Pakistan
                     </div>
                   </div>
@@ -151,8 +150,8 @@ export const ContactSection = () => {
 
             <div className="rounded-2xl overflow-hidden border border-border shadow-card h-72">
               <iframe
-                title="Fatima Automation — Office #1, Mian Plaza, Khayaban-e-Firdousi, Johar Town, Lahore"
-                src="https://www.google.com/maps?q=Mian%20Plaza%2C%20Khayaban-e-Firdousi%2C%20Block%20B1%2C%20Johar%20Town%2C%20Lahore%2C%20Pakistan&output=embed"
+                title="Fatima Automation — 15-A Khayaban-e-Amin, Lahore"
+                src="https://www.google.com/maps?q=15-A%20Khayaban-e-Amin%2C%20Lahore%2C%20Pakistan&output=embed"
                 width="100%"
                 height="100%"
                 loading="lazy"
@@ -162,7 +161,7 @@ export const ContactSection = () => {
               />
             </div>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Mian+Plaza+Khayaban-e-Firdousi+Johar+Town+Lahore"
+              href="https://www.google.com/maps/search/?api=1&query=15-A+Khayaban-e-Amin+Lahore"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary-glow transition-colors"
