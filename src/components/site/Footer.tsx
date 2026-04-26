@@ -37,7 +37,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="size-4 text-primary mt-0.5 shrink-0" />
-                <span>Johar Town, Lahore, Pakistan</span>
+                <span>15-A Khayaban-e-Amin, Lahore, Pakistan</span>
               </li>
             </ul>
           </div>

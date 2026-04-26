@@ -10,17 +10,17 @@ import {
   BatteryCharging,
   ShieldCheck,
 } from "lucide-react";
-import efImg from "@/assets/work/ef_smart-1200w.webp";
+import efImg from "@/assets/work/ef_ss_poles.png";
 
 const FEATURES = [
   { icon: Smartphone, title: "Mobile Control App", desc: "Arm, disarm and monitor your fence from anywhere." },
   { icon: Bell, title: "Mobile Alerts", desc: "Real-time notifications on every event." },
-  { icon: Radio, title: "2 Remote Controls", desc: "Quick on/off access from your keychain." },
+  { icon: Radio, title: "Remote Control", desc: "Quick on/off access from your keychain." },
   { icon: Wrench, title: "Stainless Steel Poles", desc: "Heavy-duty 16–18 gauge for long life." },
   { icon: CloudRain, title: "Weatherproof", desc: "Built for Pakistan's climate, year-round." },
-  { icon: Cable, title: "1.6mm Rustproof Wire", desc: "High tensile, corrosion-resistant cable." },
-  { icon: BatteryCharging, title: "6 Hours Battery Backup", desc: "Stay protected during power cuts." },
-  { icon: ShieldCheck, title: "2 Years Warranty", desc: "Peace of mind with full warranty." },
+  { icon: Cable, title: "Rustproof Wire", desc: "High tensile, corrosion-resistant cable." },
+  { icon: BatteryCharging, title: "Longest Battery Backup", desc: "Stay protected during power cuts." },
+  { icon: ShieldCheck, title: "1 Year Warranty", desc: "Peace of mind with full warranty." },
 ];
 
 interface Props {

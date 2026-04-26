@@ -1,6 +1,6 @@
 import { SectionHeader } from "./SectionHeader";
 import { Button } from "@/components/ui/button";
-import gateImg from "@/assets/work/gm_phonecontrol-1200w.webp";
+import gateImg from "@/assets/work/gate_swing_auto.png";
 import { CheckCircle2 } from "lucide-react";
 
 const FEATURES = [
@@ -57,7 +57,7 @@ export const GateAutomationSection = ({ onQuote }: Props) => {
             <div className="relative rounded-3xl overflow-hidden border border-border shadow-elegant">
               <img
                 src={gateImg}
-                alt="Smartphone controlling an automated driveway gate"
+                alt="Automated swing gate with motor system installed at a residential entrance"
                 className="w-full h-[520px] object-cover"
                 loading="lazy"
               />

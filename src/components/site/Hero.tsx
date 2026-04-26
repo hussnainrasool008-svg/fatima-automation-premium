@@ -32,13 +32,14 @@ export const Hero = ({ onQuote }: HeroProps) => {
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] font-bold mb-6">
             Smart{" "}
             <span className="text-gradient-gold">Security &amp; Automation</span>{" "}
-            Solutions for Your Home
+            Solutions for Homes, Hospitals &amp; Commercial Spaces
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed">
             Fatima Automation designs and installs premium electric fencing, gate
-            automation and home automation systems — engineered for reliability,
-            controlled from your phone.
+            automation and home automation systems for residential, medical and
+            corporate environments — engineered for reliability, controlled from
+            your phone.
           </p>
 
           <div className="flex flex-wrap gap-4">
