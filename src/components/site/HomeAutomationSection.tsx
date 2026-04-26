@@ -1,6 +1,6 @@
 import { SectionHeader } from "./SectionHeader";
 import { Button } from "@/components/ui/button";
-import homeImg from "@/assets/work/ef_home-800w.webp";
+import homeImg from "@/assets/work/luxury_villa_fence.png";
 import {
   Lightbulb,
   Plug,
