@@ -42,11 +42,11 @@ export const ProjectsSection = () => {
           description="A glimpse of recent electric fence, gate automation and home automation work completed across Lahore."
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[220px] gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[220px] gap-0">
           {PROJECTS.map((p, i) => (
             <figure
               key={i}
-              className={`group relative overflow-hidden rounded-2xl border border-border hover:border-primary/50 transition-all duration-500 shadow-card ${
+              className={`group relative overflow-hidden transition-all duration-500 ${
                 p.span ?? ""
               }`}
             >
