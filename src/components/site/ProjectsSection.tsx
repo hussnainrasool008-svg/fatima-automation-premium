@@ -2,9 +2,9 @@ import { SectionHeader } from "./SectionHeader";
 
 import ef1 from "@/assets/work/ef1-1200w.webp";
 import efFactory from "@/assets/work/ef_factory-800w.webp";
-import efHome from "@/assets/work/ef_home-800w.webp";
+
 import efNotif from "@/assets/work/ef_notifications-1200w.webp";
-import efPf1 from "@/assets/work/ef_pf1-1200w.webp";
+
 import efPf5 from "@/assets/work/ef_pf5-1200w.webp";
 import efSmart from "@/assets/work/ef_smart-1200w.webp";
 import efSsrods from "@/assets/work/ef_ssrods-1200w.webp";
