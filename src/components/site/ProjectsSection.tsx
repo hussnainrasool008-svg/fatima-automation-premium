@@ -6,9 +6,9 @@ import efFactory from "@/assets/work/ef_factory-800w.webp";
 import efNotif from "@/assets/work/ef_notifications-1200w.webp";
 
 import efPf5 from "@/assets/work/ef_pf5-1200w.webp";
-import efSmart from "@/assets/work/ef_smart-1200w.webp";
+import efSmart from "@/assets/work/energizer_tongher.png";
 import efSsrods from "@/assets/work/ef_ssrods-1200w.webp";
-import gmPhone from "@/assets/work/gm_phonecontrol-1200w.webp";
+import gmPhone from "@/assets/work/gate_app_car.png";
 import gmTrack from "@/assets/work/gm_track-1200w.webp";
 import ssSecurity from "@/assets/work/ss_security-1200w.webp";
 import ssWhy from "@/assets/work/gate_premium_entrance.png";
