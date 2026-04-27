@@ -178,8 +178,18 @@ export const ContactSection = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             className="lg:col-span-7 p-7 md:p-10 rounded-2xl bg-gradient-card border border-border shadow-card space-y-5"
           >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don't fill this out: <input name="bot-field" />
+              </label>
+            </p>
             <h3 className="font-display text-2xl md:text-3xl font-semibold mb-2">
               Send us a message
             </h3>
@@ -187,52 +197,76 @@ export const ContactSection = () => {
               Fill out the form below and we'll get back to you shortly.
             </p>
 
-            <div className="space-y-2">
-              <Label htmlFor="c-name">Name</Label>
-              <Input
-                id="c-name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your full name"
-                maxLength={100}
-                required
-                className="h-12"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="c-phone">Phone Number</Label>
-              <Input
-                id="c-phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+92 300 0000000"
-                maxLength={25}
-                required
-                className="h-12"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="c-message">Message</Label>
-              <Textarea
-                id="c-message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="How can we help you?"
-                rows={6}
-                maxLength={1000}
-                required
-              />
-            </div>
-            <Button
-              type="submit"
-              variant="hero"
-              size="lg"
-              disabled={submitting}
-              className="w-full sm:w-auto"
-            >
-              {submitting ? "Sending…" : "Send Message"}
-            </Button>
+            {success ? (
+              <div className="flex flex-col items-center text-center py-10 px-4 rounded-xl bg-primary/5 border border-primary/20">
+                <CheckCircle2 className="size-14 text-primary mb-4" />
+                <h4 className="font-display text-2xl font-semibold mb-2">
+                  Thank you!
+                </h4>
+                <p className="text-muted-foreground mb-6 max-w-md">
+                  Your message has been sent successfully. We'll get back to you shortly.
+                </p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setSuccess(false)}
+                >
+                  Send another message
+                </Button>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  <Label htmlFor="c-name">Name</Label>
+                  <Input
+                    id="c-name"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your full name"
+                    maxLength={100}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="c-email">Email</Label>
+                  <Input
+                    id="c-email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    maxLength={255}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="c-message">Message</Label>
+                  <Textarea
+                    id="c-message"
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="How can we help you?"
+                    rows={6}
+                    maxLength={1000}
+                    required
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="lg"
+                  disabled={submitting}
+                  className="w-full sm:w-auto"
+                >
+                  {submitting ? "Sending…" : "Send Message"}
+                </Button>
+              </>
+            )}
           </form>
         </div>
       </div>
