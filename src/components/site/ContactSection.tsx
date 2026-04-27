@@ -4,47 +4,52 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, MessageCircle, User } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, User, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Please enter a valid phone number")
-    .max(25)
-    .regex(/^[0-9+\-\s()]+$/i, "Only digits and + - ( ) are allowed"),
+  email: z.string().trim().email("Please enter a valid email").max(255),
   message: z.string().trim().min(5, "Message is too short").max(1000),
 });
 
+const encode = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+
 export const ContactSection = () => {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = schema.safeParse({ name, phone, message });
+    const result = schema.safeParse({ name, email, message });
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
     setSubmitting(true);
-    const text = `New website inquiry%0A%0AName: ${encodeURIComponent(
-      name
-    )}%0APhone: ${encodeURIComponent(phone)}%0A%0A${encodeURIComponent(message)}`;
-    const url = `https://wa.me/923213190017?text=${text}`;
-    setTimeout(() => {
-      window.open(url, "_blank", "noopener,noreferrer");
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", name, email, message }),
+      });
       toast.success("Your message has been sent successfully");
+      setSuccess(true);
       setName("");
-      setPhone("");
+      setEmail("");
       setMessage("");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
       setSubmitting(false);
-    }, 500);
+    }
   };
 
   return (
@@ -173,8 +178,18 @@ export const ContactSection = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             className="lg:col-span-7 p-7 md:p-10 rounded-2xl bg-gradient-card border border-border shadow-card space-y-5"
           >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don't fill this out: <input name="bot-field" />
+              </label>
+            </p>
             <h3 className="font-display text-2xl md:text-3xl font-semibold mb-2">
               Send us a message
             </h3>
@@ -182,52 +197,76 @@ export const ContactSection = () => {
               Fill out the form below and we'll get back to you shortly.
             </p>
 
-            <div className="space-y-2">
-              <Label htmlFor="c-name">Name</Label>
-              <Input
-                id="c-name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your full name"
-                maxLength={100}
-                required
-                className="h-12"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="c-phone">Phone Number</Label>
-              <Input
-                id="c-phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+92 300 0000000"
-                maxLength={25}
-                required
-                className="h-12"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="c-message">Message</Label>
-              <Textarea
-                id="c-message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="How can we help you?"
-                rows={6}
-                maxLength={1000}
-                required
-              />
-            </div>
-            <Button
-              type="submit"
-              variant="hero"
-              size="lg"
-              disabled={submitting}
-              className="w-full sm:w-auto"
-            >
-              {submitting ? "Sending…" : "Send Message"}
-            </Button>
+            {success ? (
+              <div className="flex flex-col items-center text-center py-10 px-4 rounded-xl bg-primary/5 border border-primary/20">
+                <CheckCircle2 className="size-14 text-primary mb-4" />
+                <h4 className="font-display text-2xl font-semibold mb-2">
+                  Thank you!
+                </h4>
+                <p className="text-muted-foreground mb-6 max-w-md">
+                  Your message has been sent successfully. We'll get back to you shortly.
+                </p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setSuccess(false)}
+                >
+                  Send another message
+                </Button>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  <Label htmlFor="c-name">Name</Label>
+                  <Input
+                    id="c-name"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your full name"
+                    maxLength={100}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="c-email">Email</Label>
+                  <Input
+                    id="c-email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    maxLength={255}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="c-message">Message</Label>
+                  <Textarea
+                    id="c-message"
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="How can we help you?"
+                    rows={6}
+                    maxLength={1000}
+                    required
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="lg"
+                  disabled={submitting}
+                  className="w-full sm:w-auto"
+                >
+                  {submitting ? "Sending…" : "Send Message"}
+                </Button>
+              </>
+            )}
           </form>
         </div>
       </div>
