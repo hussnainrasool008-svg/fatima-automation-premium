@@ -247,6 +247,20 @@ export const ContactSection = () => {
                   />
                 </div>
                 <div className="space-y-2">
+                  <Label htmlFor="c-phone">Phone Number</Label>
+                  <Input
+                    id="c-phone"
+                    name="phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+92 300 1234567"
+                    maxLength={30}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="c-message">Message</Label>
                   <Textarea
                     id="c-message"
