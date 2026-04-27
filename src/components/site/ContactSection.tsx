@@ -23,13 +23,14 @@ const encode = (data: Record<string, string>) =>
 export const ContactSection = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = schema.safeParse({ name, email, message });
+    const result = schema.safeParse({ name, email, phone, message });
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
@@ -39,12 +40,13 @@ export const ContactSection = () => {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", name, email, message }),
+        body: encode({ "form-name": "contact", name, email, phone, message }),
       });
       toast.success("Your message has been sent successfully");
       setSuccess(true);
       setName("");
       setEmail("");
+      setPhone("");
       setMessage("");
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
