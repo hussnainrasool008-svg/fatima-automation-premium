@@ -1,6 +1,6 @@
 import { SectionHeader } from "./SectionHeader";
 import { Button } from "@/components/ui/button";
-import gateImg from "@/assets/work/gate_app_opening.png";
+import gateImg from "@/assets/work/gate_app_opening_v2.png";
 import { CheckCircle2 } from "lucide-react";
 
 const FEATURES = [
