@@ -2,9 +2,9 @@ import { SectionHeader } from "./SectionHeader";
 
 import ef1 from "@/assets/work/ef1-1200w.webp";
 import efFactory from "@/assets/work/ef_factory-800w.webp";
-import efHome from "@/assets/work/ef_home-800w.webp";
+
 import efNotif from "@/assets/work/ef_notifications-1200w.webp";
-import efPf1 from "@/assets/work/ef_pf1-1200w.webp";
+
 import efPf5 from "@/assets/work/ef_pf5-1200w.webp";
 import efSmart from "@/assets/work/ef_smart-1200w.webp";
 import efSsrods from "@/assets/work/ef_ssrods-1200w.webp";
@@ -14,12 +14,12 @@ import ssSecurity from "@/assets/work/ss_security-1200w.webp";
 import ssWhy from "@/assets/work/gate_premium_entrance.png";
 import gateMotor from "@/assets/work/gate_motor_closeup.png";
 import slidingGateMotor from "@/assets/work/sliding_gate_motor.png";
+import swingGateTwinMotors from "@/assets/work/swing_gate_twin_motors.png";
 
 const PROJECTS = [
   { src: ssSecurity, title: "Premium Perimeter Fence", category: "Electric Fence", span: "lg:col-span-2 lg:row-span-2" },
-  { src: efPf1, title: "Residential Villa Security", category: "Electric Fence" },
+  { src: swingGateTwinMotors, title: "Twin Motor Swing Gate", category: "Gate Automation" },
   { src: gmPhone, title: "Smart Gate Access", category: "Gate Automation" },
-  { src: efHome, title: "Modern Home Installation", category: "Electric Fence" },
   { src: gmTrack, title: "Sliding Gate Track System", category: "Gate Automation" },
   { src: efSmart, title: "Smart Energizer Setup", category: "Electric Fence", span: "lg:col-span-2" },
   { src: efSsrods, title: "Stainless Steel Poles", category: "Electric Fence" },
