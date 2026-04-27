@@ -11,6 +11,7 @@ import { z } from "zod";
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
+  phone: z.string().trim().min(7, "Please enter a valid phone number").max(30),
   message: z.string().trim().min(5, "Message is too short").max(1000),
 });
 
@@ -22,13 +23,14 @@ const encode = (data: Record<string, string>) =>
 export const ContactSection = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = schema.safeParse({ name, email, message });
+    const result = schema.safeParse({ name, email, phone, message });
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
@@ -38,12 +40,13 @@ export const ContactSection = () => {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", name, email, message }),
+        body: encode({ "form-name": "contact", name, email, phone, message }),
       });
       toast.success("Your message has been sent successfully");
       setSuccess(true);
       setName("");
       setEmail("");
+      setPhone("");
       setMessage("");
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
@@ -239,6 +242,20 @@ export const ContactSection = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
                     maxLength={255}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="c-phone">Phone Number</Label>
+                  <Input
+                    id="c-phone"
+                    name="phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+92 300 1234567"
+                    maxLength={30}
                     required
                     className="h-12"
                   />
