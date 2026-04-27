@@ -4,47 +4,52 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, MessageCircle, User } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, User, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Please enter a valid phone number")
-    .max(25)
-    .regex(/^[0-9+\-\s()]+$/i, "Only digits and + - ( ) are allowed"),
+  email: z.string().trim().email("Please enter a valid email").max(255),
   message: z.string().trim().min(5, "Message is too short").max(1000),
 });
 
+const encode = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+
 export const ContactSection = () => {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = schema.safeParse({ name, phone, message });
+    const result = schema.safeParse({ name, email, message });
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
     setSubmitting(true);
-    const text = `New website inquiry%0A%0AName: ${encodeURIComponent(
-      name
-    )}%0APhone: ${encodeURIComponent(phone)}%0A%0A${encodeURIComponent(message)}`;
-    const url = `https://wa.me/923213190017?text=${text}`;
-    setTimeout(() => {
-      window.open(url, "_blank", "noopener,noreferrer");
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", name, email, message }),
+      });
       toast.success("Your message has been sent successfully");
+      setSuccess(true);
       setName("");
-      setPhone("");
+      setEmail("");
       setMessage("");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
       setSubmitting(false);
-    }, 500);
+    }
   };
 
   return (
