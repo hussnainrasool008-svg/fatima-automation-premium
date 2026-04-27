@@ -31,8 +31,8 @@ export const Hero = ({ onQuote }: HeroProps) => {
 
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] font-bold mb-6">
             Smart{" "}
-            <span className="text-gradient-gold">Security &amp; Automation</span>{" "}
-            Solutions for Homes, Hospitals &amp; Commercial Spaces
+            <span className="text-gradient-gold">Automation Solutions</span>{" "}
+            for Every Space
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed">
